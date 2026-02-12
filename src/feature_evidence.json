@@ -1,0 +1,61 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-documented-reproducible-process-to-produce-an-android-apk-for-the-current-web-app-including-all-required-project-files-configuration-in-repo-so-a-developer-can-run-the-build-locally-and-generate-a-debug-apk",
+      "featureTitle": "Add a documented, reproducible process to produce an Android APK for the current web app, including all required project files/configuration in-repo so a developer can run the build locally and generate a debug APK.",
+      "files": [
+        "frontend/ANDROID_APK.md",
+        "frontend/android/app/build.gradle",
+        "frontend/android/app/src/main/AndroidManifest.xml",
+        "frontend/android/app/src/main/java/com/tablebook/webview/MainActivity.kt",
+        "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+        "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+        "frontend/android/app/src/main/res/values/strings.xml",
+        "frontend/android/app/src/main/res/values/themes.xml",
+        "frontend/android/build.gradle",
+        "frontend/android/gradle/wrapper/gradle-wrapper.properties",
+        "frontend/android/gradlew",
+        "frontend/android/gradlew.bat",
+        "frontend/android/settings.gradle",
+        "frontend/index.html",
+        "frontend/scripts/android-sync-web-assets.sh",
+        "frontend/src/App.tsx",
+        "frontend/src/components/LaunchOfferAd.tsx",
+        "frontend/src/pages/HomeTab.tsx",
+        "frontend/src/pages/ReelsTab.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-standard-way-to-export-share-the-full-project-source-code-as-a-single-zip-archive-including-frontend-and-backend-code-and-any-required-configuration-files",
+      "featureTitle": "Add a standard way to export/share the full project source code as a single ZIP archive, including frontend and backend code and any required configuration files.",
+      "files": [
+        "frontend/.gitignore",
+        "frontend/EXPORT_SOURCE_ZIP.md",
+        "frontend/scripts/export-source-zip.sh"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

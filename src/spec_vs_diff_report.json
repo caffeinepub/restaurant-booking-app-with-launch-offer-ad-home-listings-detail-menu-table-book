@@ -1,0 +1,77 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T11:33:00.182Z",
+  "summary": "Diff adds an in-repo Android WebView wrapper project under frontend/android plus helper scripts for syncing built web assets and exporting a source ZIP. However, the Android build documentation content is truncated in the diff summary, and the Gradle wrapper JAR is not evidenced, so the reproducibility of the APK build process cannot be fully verified from the provided diff. Several unrelated app/backend changes were also introduced beyond the packaging/export scope.",
+  "missing_requirements": [
+    {
+      "id": "REQ-11",
+      "requirement": "Add a documented, reproducible process to produce an Android APK (WebView shell) including exact commands to install deps, build web frontend, sync assets, and generate a debug APK.",
+      "reason": "While an Android project and an asset-sync script were added, the Android build documentation (ANDROID_APK.md) is truncated in the diff summary right after the 'Install Frontend Dependencies' heading, so the required exact command sequence cannot be confirmed from evidence provided. Additionally, the presence of the Gradle wrapper JAR (required for reproducible wrapper builds) is not evidenced in the diff summary.",
+      "evidence": [
+        "frontend/ANDROID_APK.md",
+        "frontend/scripts/android-sync-web-assets.sh",
+        "frontend/android/gradlew",
+        "frontend/android/gradle/wrapper/gradle-wrapper.properties"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend migration module and upgrade/migration wiring added to backend actor.",
+      "reason": "BuildRequest focuses on Android APK build setup and source ZIP export; it does not request backend data schema migrations or actor upgrade handling changes.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "App behavior/UI changes: session-based launch offer ad display, additional asset-base resolution logic, and related UI updates across pages/components.",
+      "reason": "Non-goals explicitly disallow adding new product features unrelated to packaging/export; these changes modify runtime app behavior/UI beyond APK packaging and ZIP export.",
+      "evidence": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/LaunchOfferAd.tsx",
+        "frontend/src/pages/HomeTab.tsx",
+        "frontend/src/pages/ReelsTab.tsx"
+      ]
+    },
+    {
+      "description": "Backend now seeds sample restaurants/reels on mount via initializeData call from the frontend.",
+      "reason": "Not requested by REQ-11/REQ-12 and constitutes additional product/data behavior beyond packaging/export.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/.gitignore",
+    "frontend/ANDROID_APK.md",
+    "frontend/EXPORT_SOURCE_ZIP.md",
+    "frontend/android/app/build.gradle",
+    "frontend/android/app/src/main/AndroidManifest.xml",
+    "frontend/android/app/src/main/java/com/tablebook/webview/MainActivity.kt",
+    "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "frontend/android/app/src/main/res/values/colors.xml",
+    "frontend/android/app/src/main/res/values/strings.xml",
+    "frontend/android/app/src/main/res/values/themes.xml",
+    "frontend/android/build.gradle",
+    "frontend/android/gradle/wrapper/gradle-wrapper.properties",
+    "frontend/android/gradlew",
+    "frontend/android/gradlew.bat",
+    "frontend/android/settings.gradle",
+    "frontend/index.html",
+    "frontend/scripts/android-sync-web-assets.sh",
+    "frontend/scripts/export-source-zip.sh",
+    "frontend/src/App.tsx",
+    "frontend/src/components/LaunchOfferAd.tsx",
+    "frontend/src/pages/HomeTab.tsx",
+    "frontend/src/pages/ReelsTab.tsx",
+    "project_state.json"
+  ]
+}

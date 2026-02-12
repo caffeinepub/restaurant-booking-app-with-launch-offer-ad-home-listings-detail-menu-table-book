@@ -1,2 +1,3 @@
-# restaurant-booking-app-with-launch-offer-ad-home-listings-detail-menu-table-book
-Exported from Caffeine project: Restaurant booking app with launch offer ad, home listings, detail+menu+table booking, and short reels tab
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

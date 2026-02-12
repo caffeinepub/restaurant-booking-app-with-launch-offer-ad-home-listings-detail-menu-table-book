@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TableBook" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#D97706</item>
+        <item name="colorPrimaryDark">#B45309</item>
+        <item name="colorAccent">#D97706</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

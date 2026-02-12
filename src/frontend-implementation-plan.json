@@ -1,0 +1,140 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Android APK build setup + reproducible source ZIP export",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "summary": "Commit an Android WebView shell project and documentation to build a debug APK that loads the existing web app.",
+      "acceptanceCriteria": [
+        "Repository contains an Android build setup (e.g., wrapper project and configuration committed) that loads the existing built web assets in an Android WebView-based shell.",
+        "Docs include exact commands to: install dependencies, build the web frontend, sync/copy web assets into the Android project, and generate a debug APK.",
+        "A debug APK can be produced locally following the docs without requiring paid accounts or proprietary tooling.",
+        "The APK launches successfully and displays the app (Home tab, Reels tab, restaurant detail, booking form) without runtime errors."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/ANDROID_APK.md",
+          "operation": "create",
+          "description": "Add step-by-step, reproducible local build documentation for producing a debug APK: prerequisites (Android Studio/SDK + Java), commands to install frontend deps, build the web app, run an asset sync step into the Android project, and build/install a debug APK. Include troubleshooting notes specific to WebView and local asset loading."
+        },
+        {
+          "path": "frontend/scripts/android-sync-web-assets.sh",
+          "operation": "create",
+          "description": "Create a repeatable script to copy the built web assets (including static assets under frontend/public) into the Android app's bundled web directory (e.g., app/src/main/assets/www). Ensure it cleans stale files and produces a consistent output for the Android WebView to load."
+        },
+        {
+          "path": "frontend/android/settings.gradle",
+          "operation": "create",
+          "description": "Create the Android wrapper project settings to include an app module for the WebView shell."
+        },
+        {
+          "path": "frontend/android/build.gradle",
+          "operation": "create",
+          "description": "Create the Android top-level Gradle build configuration for the WebView shell project."
+        },
+        {
+          "path": "frontend/android/gradle/wrapper/gradle-wrapper.properties",
+          "operation": "create",
+          "description": "Add the Gradle wrapper configuration so builds are reproducible without requiring global Gradle installation."
+        },
+        {
+          "path": "frontend/android/gradlew",
+          "operation": "create",
+          "description": "Add the Gradle wrapper script for *nix to support reproducible local builds."
+        },
+        {
+          "path": "frontend/android/gradlew.bat",
+          "operation": "create",
+          "description": "Add the Gradle wrapper script for Windows to support reproducible local builds."
+        },
+        {
+          "path": "frontend/android/app/build.gradle",
+          "operation": "create",
+          "description": "Create the Android app module configuration (debug build supported) for a WebView-based shell that loads bundled web assets and allows local debugging."
+        },
+        {
+          "path": "frontend/android/app/src/main/AndroidManifest.xml",
+          "operation": "create",
+          "description": "Add Android manifest for the WebView shell activity, required permissions (only what is necessary for WebView + network access), and proper launch configuration."
+        },
+        {
+          "path": "frontend/android/app/src/main/java/com/tablebook/webview/MainActivity.kt",
+          "operation": "create",
+          "description": "Implement a minimal Android Activity that hosts a WebView and loads the bundled web app entry file from assets (e.g., assets/www/index.html), with safe WebView settings suitable for a debug build."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/values/strings.xml",
+          "operation": "create",
+          "description": "Add app name/strings used by the Android shell."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+          "operation": "create",
+          "description": "Add launcher icon resource configuration for the Android shell."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+          "operation": "create",
+          "description": "Add round launcher icon resource configuration for the Android shell."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/values/themes.xml",
+          "operation": "create",
+          "description": "Add minimal theme setup to support a fullscreen/standard activity for the WebView shell."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update static asset references used by the UI (e.g., logo/empty states/offer banner) to be compatible with Android WebView asset loading (avoid leading-slash absolute paths that can break under file-based asset origins). Ensure Home tab, Reels tab, restaurant detail, and booking form still render correctly."
+        },
+        {
+          "path": "frontend/src/pages/HomeTab.tsx",
+          "operation": "modify",
+          "description": "Update empty-state image reference to be compatible with Android WebView asset loading (avoid leading-slash absolute paths) while keeping current UX intact."
+        },
+        {
+          "path": "frontend/src/pages/ReelsTab.tsx",
+          "operation": "modify",
+          "description": "Update empty-state image reference to be compatible with Android WebView asset loading (avoid leading-slash absolute paths) while keeping current UX intact."
+        },
+        {
+          "path": "frontend/src/components/LaunchOfferAd.tsx",
+          "operation": "modify",
+          "description": "Update offer banner/logo image references to be compatible with Android WebView asset loading (avoid leading-slash absolute paths) while keeping current UX intact."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Adjust the HTML entry configuration (e.g., base URL handling) so the built frontend can be reliably loaded from Android WebView bundled assets as well as in the browser, without breaking module resolution."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Add a standard script/documented command to export the full project source as a single ZIP with excludes for build artifacts.",
+      "acceptanceCriteria": [
+        "Repository includes a script or documented command that produces a ZIP containing the full source tree (frontend + backend).",
+        "The ZIP excludes unnecessary build artifacts (e.g., node_modules, dist) via an explicit exclude list or by only including source directories.",
+        "Running the ZIP export produces a single archive file whose contents can be unzipped and built following existing project instructions."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/scripts/export-source-zip.sh",
+          "operation": "create",
+          "description": "Create a reproducible ZIP export script that generates a single archive containing the full project source tree (including both frontend and backend directories) while explicitly excluding build artifacts (e.g., node_modules, dist/build outputs, .dfx, caches). The script should write the ZIP to a predictable output location."
+        },
+        {
+          "path": "frontend/EXPORT_SOURCE_ZIP.md",
+          "operation": "create",
+          "description": "Document the exact command(s) to run the ZIP export script, what gets included/excluded, where the ZIP is produced, and how to unzip and proceed with the normal project build instructions."
+        },
+        {
+          "path": "frontend/.gitignore",
+          "operation": "modify",
+          "description": "Add ignore rules for ZIP export outputs (and any Android build outputs committed to local working directories) so generated archives and intermediate files are not accidentally committed."
+        }
+      ]
+    }
+  ]
+}

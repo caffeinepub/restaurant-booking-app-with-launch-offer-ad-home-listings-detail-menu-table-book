@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Restaurant booking app that shows a hotel/restaurant offer ad on launch, lists available restaurants on the home tab, provides restaurant detail pages with menu and table booking, and includes a second bottom-nav tab for Instagram-style short advertisement reels.",
+  "architectural_notes": [
+    "Use a bottom navigation bar with two primary tabs: Home (restaurant list) and Reels (short video ads).",
+    "Include a restaurant/hotel detail view that links menu viewing and table booking."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-a-bottom-navigation-with-two-tabs-1-home-restaurant-hotel-listings-and-2-reels-instagram-style-short-advertisement-reels",
+      "title": "Implement a bottom navigation with two tabs: (1) Home (restaurant/hotel listings) and (2) Reels (Instagram-style short advertisement reels).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-show-a-launch-opening-advertisement-for-a-hotel-offer-when-the-app-is-opened-presented-as-a-dismissible-full-screen-or-modal-ad",
+      "title": "Show a launch/opening advertisement for a hotel offer when the app is opened, presented as a dismissible full-screen or modal ad.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-home-tab-that-lists-all-available-restaurants-hotels-showing-key-summary-info-for-each-and-allowing-navigation-to-a-detail-view",
+      "title": "Create a Home tab that lists all available restaurants/hotels, showing key summary info for each and allowing navigation to a detail view.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-restaurant-hotel-detail-view-that-displays-the-menu-for-that-restaurant-hotel",
+      "title": "Implement a restaurant/hotel detail view that displays the menu for that restaurant/hotel.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-table-booking-flow-from-the-restaurant-hotel-detail-view-allowing-a-user-to-submit-a-booking-request-for-a-given-date-time-and-party-size",
+      "title": "Implement a table booking flow from the restaurant/hotel detail view, allowing a user to submit a booking request for a given date/time and party size.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-reels-tab-as-a-vertically-scrollable-feed-of-short-advertisement-reels-for-hotels-restaurants-each-reel-supporting-video-playback-with-basic-controls-play-pause-mute-unmute",
+      "title": "Implement the Reels tab as a vertically scrollable feed of short advertisement reels for hotels/restaurants, each reel supporting video playback with basic controls (play/pause, mute/unmute).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-coherent-distinctive-visual-theme-for-the-app-colors-typography-spacing-component-styling-and-apply-it-consistently-across-home-detail-booking-and-reels-screens-do-not-use-a-blue-purple-primary-palette",
+      "title": "Provide a coherent, distinctive visual theme for the app (colors, typography, spacing, component styling) and apply it consistently across Home, Detail, Booking, and Reels screens. Do not use a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-generated-static-image-assets-to-the-frontend-and-use-them-in-the-ui-e-g-app-logo-and-a-generic-offer-banner-image-storing-them-under-frontend-public-assets-generated",
+      "title": "Add generated static image assets to the frontend and use them in the UI (e.g., app logo and a generic offer banner image), storing them under frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-documented-reproducible-process-to-produce-an-android-apk-for-the-current-web-app-including-all-required-project-files-configuration-in-repo-so-a-developer-can-run-the-build-locally-and-generate-a-debug-apk",
+      "title": "Add a documented, reproducible process to produce an Android APK for the current web app, including all required project files/configuration in-repo so a developer can run the build locally and generate a debug APK.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-standard-way-to-export-share-the-full-project-source-code-as-a-single-zip-archive-including-frontend-and-backend-code-and-any-required-configuration-files",
+      "title": "Add a standard way to export/share the full project source code as a single ZIP archive, including frontend and backend code and any required configuration files.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Show an opening/launch advertisement for a hotel offer",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Homepage lists all available restaurants/hotels",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Restaurant/hotel detail page with menu display",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Table booking flow from restaurant/hotel detail page",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Bottom navigation with two tabs: Home and Short Reels",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Instagram-style short reels feed for hotel advertisement videos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Create backend data models and APIs to support: (a) restaurants/hotels, (b) menu items per restaurant/hotel, (c) bookings, and (d) reels (video URL + metadata). Provide query methods for lists and details, and an update method to create bookings.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Seed the app with sample content so it is usable immediately after deployment: at least 5 restaurants/hotels with menus, at least 5 reels, and 1 launch offer ad configuration.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Provide an Android APK build for the app",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Provide a zipped archive of the app source code for download/sharing",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Restaurant booking app with launch offer ad, home listings, detail+menu+table booking, and short reels tab",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

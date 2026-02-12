@@ -1,0 +1,68 @@
+{
+  "kind": "build_request",
+  "title": "Provide Android APK build instructions and source code ZIP packaging",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Add a documented, reproducible process to produce an Android APK for the current web app, including all required project files/configuration in-repo so a developer can run the build locally and generate a debug APK.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Can u build an apk version of above app."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Repository contains an Android build setup (e.g., wrapper project and configuration committed) that loads the existing built web assets in an Android WebView-based shell.",
+        "Docs include exact commands to: install dependencies, build the web frontend, sync/copy web assets into the Android project, and generate a debug APK.",
+        "A debug APK can be produced locally following the docs without requiring paid accounts or proprietary tooling.",
+        "The APK launches successfully and displays the app (Home tab, Reels tab, restaurant detail, booking form) without runtime errors."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add a standard way to export/share the full project source code as a single ZIP archive, including frontend and backend code and any required configuration files.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "And also can u share the zip of the code"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Repository includes a script or documented command that produces a ZIP containing the full source tree (frontend + backend).",
+        "The ZIP excludes unnecessary build artifacts (e.g., node_modules, dist) via an explicit exclude list or by only including source directories.",
+        "Running the ZIP export produces a single archive file whose contents can be unzipped and built following existing project instructions."
+      ]
+    }
+  ],
+  "constraints": [
+    "Keep the backend as a single Motoko actor in backend/main.mo (no additional backend services).",
+    "Do not modify files under frontend/src/components/ui or other frontend immutable paths listed in SYSTEM_CONTEXT; compose them instead.",
+    "Do not introduce third-party authentication providers; only Internet Identity is permitted."
+  ],
+  "nonGoals": [
+    "Publishing the app to the Google Play Store.",
+    "Implementing native Android-only features (push notifications, GPS/maps, background services).",
+    "Adding new product features unrelated to packaging/export (e.g., new screens, new booking logic)."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
